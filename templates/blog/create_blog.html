@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.media }}
+    {{ form.as_p }}
+
+    <div class="mb-3">
+        <label for="exampleInputDate" class="form-label">Date</label>
+        <input name="date" type="date" class="form-control" id="exampleInputDate">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock %}

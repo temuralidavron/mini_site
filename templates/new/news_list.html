@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Site</h1>
+    <ul>
+        {% for new in news %}
+        <div class="ui segment">
+            <a href="{% url 'news_detail' new.pk %}" ><li>{{ new.title }}</li></a>
+            <li>{{ new.description | safe}}</li>
+            <li>{{ new.created_date }}</li>
+        <form action="{% url 'like_post' %}" method="POST" class="ui form">
+            {% csrf_token %}
+            <input type="hidden" name="new_id" value="{{new.id}}">
+            {% if user not in new.liked.all %}
+            <button class="ui button positive" type="submit">Like</button>
+            {% else %}
+
+            <button class="ui button negative" type="submit">Unlike</button>
+            <strong>{{ new.liked.all.count }} likes</strong>
+            {% endif %}
+            </div>
+
+        </form>
+
+                            <hr>
+                     {% endfor %}
+
+        {% endblock%}
+

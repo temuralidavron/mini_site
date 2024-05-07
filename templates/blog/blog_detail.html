@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ blog.id }}</h1>
+    <ul>
+            <li>{{ blog.title }}</li>
+            <li>{{ blog.description | safe }}</li>
+            <li>{{ blog.created_date }}</li>
+<hr>
+        {% endblock%}
+

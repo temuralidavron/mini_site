@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Ismoil</h1>
+    <ul>
+        {% for blog in blogs %}
+            <a href="{% url 'blog_detail' blog.id %}"> <li>{{ blog.title }}</li></a>
+            <li>{{ blog.description | safe}}</li>
+            <li>{{ blog.created_date }}</li>
+        <a href="{% url 'blog_update' blog.id %}">Update</a>
+
+                            <hr>
+                     {% endfor %}
+
+        {% endblock%}
+
